@@ -1,0 +1,142 @@
+<html>
+	
+	<head>
+		
+		<title>V.E.R.O.N.I.C.A.</title>
+		<link rel="stylesheet" type="text/css" href="css/stile.css">
+		<link rel="shortcut icon" href="images/icon_V.png">
+				
+	</head>
+	
+	<body>
+	
+		<div id="pagina">
+		
+			<header>
+				
+				<img src="images/logo.png" id="logo" />
+				<a class="title" href="index.html"><h1>V.E.R.O.N.I.C.A.</h1></a>
+				<h2>Visual Engine for Reading On Network In Comprehensive Acceptation</h2>
+			
+			</header>
+			
+			<div id="menuSinistra" class="barraLaterale">
+			
+				<div>
+				
+					<h2 class="blockTitle">User Menu</h2>
+				
+					<p>Benvenuto %Username%</p>
+					
+					<ul>
+					
+						<li>Profilo</li>
+						<li>Log Out</li>
+					
+					</ul>
+					
+				</div>
+			
+			</div>
+			
+			<div id="menuDestra" class="barraLaterale">
+				
+				<div>
+			
+					<h2 class="blockTitle">Navigazione</h2>
+					
+					<iframe src="menu.html" frameborder="no" width="100%"></iframe>
+					
+					<!--<ul>
+					
+						<li>Home</li>
+						<li>Libri</li>
+						<li>Files Caricati</li>
+					
+					</ul>-->
+					
+				</div>
+			
+			</div>
+			
+			<!-- Qui inserire il codice della pagina da realizzare -->
+			<div id="contenuto" class="centroPagina">
+			
+				<center class="search" id="search">
+				
+					<fieldset class="searchBorder">
+					
+						<legend>Cerca un libro: </legend>
+				
+						<form method="post" action="search.php">
+						
+							<input id="barraRicerca" type="search" name="ricerca" results="5" placeholder="Libro da cercare" />
+						
+						</form>
+					
+					</fieldset>
+				
+				</center>
+				
+				<h2>Home Page</h2>
+				
+				<div>
+				
+					<form method="post" action="todefine.php">
+								
+						<textarea autofocus id="caselladitesto" name="text" rows="10" placeholder="Inserisci il testo che vuoi riprodurre..." ></textarea>
+								
+						<br />
+						<br />
+						
+						<label for="numRead">Velocita' di lettura</label>
+						<input type="number" name="numericReadingSpeed" id="numRead" value="200" min="50" max="300" style="width: 55px;" />
+						
+						<input type="submit" class="newButtons" id="homeplay" value="Riproduci" style="float: right;"/>
+								
+					</form>
+					
+				</div>
+				
+				<hr>
+				
+				<div>
+							
+					<p>Oppure carica un file:</p>
+					
+					<form method="post" enctype="multipart/form-data" action="sendDocument.php">
+					
+						<input id ="file" type="file" name="file" />
+						
+						<p>Scegli il tipo di caricamento:</p>
+						<input id="privateUp" type="radio" name="uploadPermission" value="private" checked /><label for="privateUp">   Carica il file solo per te</label>
+						<br />
+						<input id="publicUp" type="radio" name="uploadPermission" value="public" /><label for="publicUp">   Rendi disponibile per tutti</label>
+				                    <br />
+						<p>Scegli il tipo di file che stai caricando:</p>
+						<input id="typePDF" type="radio" name="uploadType" value="PDF" checked /><label for="PDFUp">   Carica un libro (EPub, PDF, Ecc...)</label>
+						<br />
+						<input id="typeTXT" type="radio" name="uploadType" value="TXT" /><label for="TXTUp">   Carica un file di testo (TXT)</label>
+						<br />
+						<br />
+						
+						<input type="submit" class="newButtons" />
+						
+					</form>
+					
+				</div>
+			
+			</div>
+						
+			<footer>
+				
+				<h2 class="blockTitle">V.E.R.O.N.I.C.A.</h2>
+				<p>Realizzato dal Veronica Team</p>
+				
+			</footer>
+			
+		</div>
+		
+	</body>
+	
+</html>
