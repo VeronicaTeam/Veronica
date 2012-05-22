@@ -1,0 +1,99 @@
+<!--Sezione 1, Script per il controllo del form e la codifica dei dati, Javascript -->
+
+<script language="Javascript"  src="security/AesCtr.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.0.1/build/rollups/hmac-sha256.js"></script>
+<script language="Javascript" src="security/HmacSha256.js"> </script>
+
+<script language="Javascript">
+	function controllo_form(){
+		var user = document.getElementsByName('user')[0].value;
+		var password = document.getElementsByName('password')[0].value;
+		var controllo = true;
+
+		if(user.length == 0){
+			alert("Inserisci il nome utente.");
+			controllo = false;
+		}
+		else if(user.length < 4){
+			alert("Nome utente troppo breve.");
+			controllo = false;
+		}
+		else if(password.length == 0){
+			alert("Inserisci la password.");
+			controllo = false;
+		}
+		else if(password.length < 8){
+			alert("Password troppo corta.");
+			controllo = false;
+		}
+
+		if(controllo == true){
+			login();
+		}
+		return true;
+	}
+
+	function login(){
+		/* 1) Inizializzazione */
+		var chiave_cod = "Chiave_fissa_provvisoria";			// In una seconda fase si utilizzerà un protocollo per chiavi.
+		var chiave_aut = "Chiave_fissa_provvisoria";			// In una seconda fase si utilizzerà un protocollo per chiavi.
+		var lunghezza = 256;								// Secondo i requisiti di sistema.
+
+		var user = document.getElementById('utente').value;		// Primo campo da codificare, il nome utente.
+		var pass = document.getElementById('chiave').value;		// Secondo campo da codificare, la password.
+
+		/* 2) Autenticazione */
+		// var autenticated_user = CryptoJS.HmacSHA256(user, chiave_aut);	
+		// var autenticated_pass = CryptoJS.HmacSHA256(pass, chiave_aut);	
+		// autenticated_user = autenticated_user.toString(CryptoJS.enc.Base64);		// Nome utente autenticato.
+		// autenticated_pass = autenticated_pass.toString(CryptoJS.enc.Base64);		// Password autenticata.
+
+		/* 3) Codifica AesCtr 256 Mode */
+		var cipher_user = Aes.Ctr.encrypt(user, chiave_cod, lunghezza);					// Nome utente codificato.
+		var cipher_pass = Aes.Ctr.encrypt(pass, chiave_cod, lunghezza);					// Password codificata.
+
+		document.getElementsByName('user_cif')[0].value = cipher_user;
+		document.getElementsByName('password_cif')[0].value = cipher_pass;
+		document.getElementById("subModify").click();
+	}
+</script>
+
+<!-- Fine Sezione 1 -->
+
+
+
+
+
+
+<!-- Sezione 2, Aspetto della pagina, HTML 5 -->
+
+<center>
+	<h1> V.E.R.O.N.I.C.A. Project </h1>
+	<br />
+	<h3> V.e.r.o.n.i.c.a. ti da il benvenuto </h3>
+
+	<input type="text" id="utente" name="user" placeholder="Username" style="width: 360px" />
+	<br /> <br />
+	<input type="password" id="chiave" name="password" placeholder="Password" style="width: 360px" />
+	<br /> <br />
+	<input type="button" value="Entra" onclick="controllo_form()"/>
+	<br /> <br /> <br /> <br />
+</center>
+
+<a href="http://192.167.155.210/?q=001-test">Prova il Test</a> | <a href="http://192.167.155.210/?q=003-info">Informazioni sul Progetto</a>
+
+<!-- Fine Sezione 2 -->
+
+
+
+
+
+<!-- Sezione 3, Form invio dati al server, HTML 5 -->
+
+<form name="Autentica" action="Login.php" method="POST">
+	<input type="hidden" id="utente_cif" name="user_cif" />
+	<input type="hidden" id="chiave_cif" name="password_cif" />
+	<input type="submit" name="subModify" id="subModify" value="Modifica" style="display: none;">
+</form>
+
+<!-- Fine Sezione 3 -->

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Inserimento di un nuovo utente nel database secondario</title>
+</head>
+
+<body>
+
+<script language="javascript">
+
+	function checkName(){
+		var nome = document.getElementById("formName");	
+		if (nome.value.length<=0){
+			alert("Errore: devi inserire un nome valido! ");
+			nome.focus();	// mantiene il focus sul campo attuale
+		}
+	}
+	
+	function checkSurname(){
+		var cognome = document.getElementById("formSurname");	
+		if (cognome.value.length<=0){
+			alert("Errore: devi inserire un cognome valido! ");
+			cognome.focus();	// mantiene il focus sul campo attuale
+		}
+	}
+	
+	function checkMail(){
+		var mail = document.getElementById("formMail");	
+		if (mail.value.length<5){
+			alert("Errore: devi inserire un indirizzo E-Mail valido! ");
+			mail.focus();	// mantiene il focus sul campo attuale
+		} else if ( mail.value.indexOf("@",0) == -1 ||
+					mail.value.indexOf(".",0) == -1 ){
+					
+					alert("Errore: devi inserire un indirizzo E-Mail valido! ");
+					mail.focus();
+		  
+		  
+		  }
+	}
+
+	function checkDate(){
+		var data = document.getElementById("formDate");	
+		if (data.value.length<8){
+			alert("Errore: devi inserire una data valida nel formato AAAA-MM-GG ! ");
+			data.focus();	// mantiene il focus sul campo attuale
+		}
+	}	
+
+</script>
+
+
+Inserisci i dati per registrare un nuovo utente:
+<form method="POST" action="Andre/UsersInsert.php">
+<table align="left">
+<tr> <td>Nome:</td> 					<td><input type="text" id="formName" name="name" maxlength="30" onblur="checkName()" value=""  				/></td></tr>
+<tr> <td>Cognome:</td> 					<td><input type="text" id="formSurname" name="surname" maxlength="30"  onblur="checkSurname()" value=""  	/></td></tr>
+<!-- <tr> <td>Username:</td>					<td><input type="text" id="formUsername" name="username" maxlength="30" value="" 		/></td></tr>
+<tr> <td>Password:</td> 				<td><input type="password" id="formPwd1" name="password1" maxlength="30" value="" 			/></td></tr>
+<tr> <td>Conferma la password:</td> 	<td><input type="password" id="formPwd2" name="password2" maxlength="30" value=""  			/></td></tr> -->
+<tr> <td>Indirizzo e-mail:</td> 		<td><input type="email" id="formMail" name="email"  maxlength="30" onblur="checkMail()" value=""		/></td></tr>
+<tr> <td>Data di nascita:</td> 			<td><input type="date" id="formDate" name="date" onblur="checkDate()" value=""							/></td></tr>
+<tr> <td>Sesso:</td> 					<td><input type="radio" id="formMan" name="sex" value="M" 										/> Maschio <br/> 
+                                            <input type="radio" id="formWoman" name="sex" value="F" 									/> Femmina</td></tr>
+<tr><td><input type="submit" value="Registra utente" /></td></tr>
+</table>
+</form>
+
+
+<tr>
+</body>
+</html>
+
+
+<!-- 
+<html> 
+<head> 
+Inserimento nuovi utenti sul database secondario: OURveronicaDB
+</head>
+ <body>
+<iframe id="insertusers" src="Andre/UsersInsert.php" height="500" width="600" > </iframe>
+</body>
+</html>
+-->

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Inserimento di un nuovo utente nel database secondario</title>
+</head>
+
+<body>
+
+
+
+Inserisci i dati per registrare un nuovo utente:
+<form method="POST" action="Andre/UsersInsert.php">
+<table align="left">
+<tr> <td>Nome:</td> 					<td><input type="text" name="name" maxlength="30" 			value="MioN"  /></td></tr>
+<tr> <td>Cognome:</td> 					<td><input type="text" name="surname" maxlength="30" 		value="MioC"  /></td></tr>
+<tr> <td>Username:</td><td><input type="text" name="username" maxlength="30" 		value="MioCF" /></td></tr>
+<tr> <td>Password:</td> 				<td><input type="password" name="password1" maxlength="30" 	value="pwd" /></td></tr>
+<tr> <td>Conferma la password:</td> 	<td><input type="password" name="password2" maxlength="30" 	value="pwd"  /></td></tr>
+<tr> <td>Indirizzo e-mail:</td> 		<td><input type="email" name="email"  maxlength="30"		value="mail@mail.com" /></td></tr>
+<tr> <td>Data di nascita:</td> 			<td><input type="date" name="date" 								/></td></tr>
+<tr> <td>Sesso:</td> 					<td><input type="radio" name="sex" value="M" 					/> Maschio <br/> 
+                                            <input type="radio" name="sex" value="F" 					/> Femmina</td></tr>
+<tr><td><input type="submit" value="Registra utente" /></td></tr>
+</table>
+</form>
+
+
+<tr>
+</body>
+</html>
+
+
+<!-- 
+<html> 
+<head> 
+Inserimento nuovi utenti sul database secondario: OURveronicaDB
+</head>
+ <body>
+<iframe id="insertusers" src="Andre/UsersInsert.php" height="500" width="600" >Piononobastardo </iframe>
+</body>
+</html>
+-->
